@@ -33,11 +33,11 @@ function App() {
   return (
 
     <>
-      <div className="min-h-screen w-full flex flex-col gap-4u justify-center items-center">
+      <div className="min-h-screen w-full flex flex-col gap-4u justify-center items-center px-5u">
 
         {/* select genre */}
-        <form>
-          <select name="genres" id="genres" onChange={ filterGenre }>
+        <form className="w-full bg-smoke-50 p-7u">
+          <select name="genres" id="genres" onChange={ filterGenre } className="w-full border-b border-smoke-200 pb-2u focus:outline-black">
             <option value="default">Scegli un genere</option>
             <option value="Fantascienza">Fantascienza</option>
             <option value="Thriller">Thriller</option>
@@ -47,7 +47,7 @@ function App() {
         </form>
 
         {/* lista films */}
-        <ul className="flex flex-col gap-7u w-[92%] bg-smoke-50 p-7u">
+        <ul className="flex flex-col gap-7u w-full bg-smoke-50 p-7u">
           {
             filteredFilms.map( (film, i) => {
 
