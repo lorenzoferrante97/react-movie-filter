@@ -1,7 +1,7 @@
 // import { useState } from 'react'
 // import './App.css'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const films = [
   { title: 'Inception', genre: 'Fantascienza' },
@@ -20,6 +20,15 @@ function App() {
   const filterGenre = (e) => {
     return setFilteredGenre( e.target.value );
   }
+
+  useEffect ( () => {
+
+    if (filteredGenre.toLowerCase() !== "default") {
+      const filterFilms = films.filter( (film) => film.genre.toLowerCase() === filteredGenre.toLowerCase() );
+      setFilteredFilms( filterFilms );
+    } else { setFilteredFilms( films ); }
+
+  }, [filteredGenre] )
 
   return (
 
@@ -40,7 +49,7 @@ function App() {
         {/* lista films */}
         <ul className="flex flex-col gap-7u w-[92%] bg-smoke-50 p-7u">
           {
-            films.map( (film, i) => {
+            filteredFilms.map( (film, i) => {
 
               return (
                 <>
